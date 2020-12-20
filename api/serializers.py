@@ -23,9 +23,13 @@ class Table1Serializer(DynamicFieldsModelSerializer):
 
 
 class Table1AggregateSerializer(DynamicFieldsModelSerializer):
-    sum_of_prices = serializers.IntegerField()
+    sum_of_prices = serializers.DecimalField(10, 2)
+    avg_of_prices = serializers.DecimalField(10, 2)
+    count_of_prices = serializers.DecimalField(10, 2)
+    max_of_prices = serializers.DecimalField(10, 2)
+    min_of_prices = serializers.DecimalField(10, 2)
 
     class Meta:
         model = Table1
-        fields = ("userid", "uploaded_time", "city", "price", "year",
-                  "county_name", "state_code", "state_name", "sum_of_prices")
+        fields = ("userid", "uploaded_time", "city", "price",
+                  "year", "county_name", "state_code", "state_name", "sum_of_prices", "avg_of_prices", "count_of_prices", "max_of_prices", "min_of_prices")
